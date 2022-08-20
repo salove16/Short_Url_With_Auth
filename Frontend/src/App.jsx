@@ -2,9 +2,9 @@
 import { Route, Routes } from 'react-router-dom'
 import './App.css'
 import Home from './Components/home/Home'
-import { Login } from './Components/login'
+import { Login } from './Components/Login'
 import { Navbar } from './Components/navbar/Navbar'
-import { SignUp } from './Components/signup'
+import { SignUp } from './Components/Signup'
 import { UrlShort } from './Components/urlShort/UrlShort'
 
 function App() {
