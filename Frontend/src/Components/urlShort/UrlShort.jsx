@@ -19,11 +19,11 @@ import { useEffect } from "react";
 export const UrlShort = () => {
   const [text, setText] = useState();
   const [token] = useCookies(["token"]);
-  console.log(token)
-const [url,setUrl]=useState([])
-useEffect(()=>{
-  getUrlData()
-},[])
+  console.log(token);
+  const [url, setUrl] = useState([]);
+  useEffect(() => {
+    getUrlData();
+  }, []);
   if (!token.token) {
     return <Navigate to={"/login"} />;
   }
@@ -47,7 +47,7 @@ useEffect(()=>{
       }
       console.log(payload, token.token);
 
-      let res = await fetch("http://localhost:4000/url", {
+      let res = await fetch("https://short-url-supply-note.herokuapp.com/url", {
         method: "POST",
         headers: {
           "content-type": "application/json",
@@ -58,30 +58,26 @@ useEffect(()=>{
       //   console.log(res)
       let data = await res.json();
       console.log(data.url, "456214521542");
-      getUrlData()
+      getUrlData();
     } catch (error) {
       console.log({ message: error.message });
     }
   };
 
-  const getUrlData=async()=>{
-  try {
-    let res = await fetch("http://localhost:4000/url", {
-      method: "GET",
-      headers: {
-     
-        authorization: `Bearer ${token.token.token}`,
-      }
-    });
-    //   console.log(res)
-    let data = await res.json();
-    setUrl(data)
-    console.log(data)
-   
-  } catch (error) {
-    
-  }
-  }
+  const getUrlData = async () => {
+    try {
+      let res = await fetch("https://short-url-supply-note.herokuapp.com/url", {
+        method: "GET",
+        headers: {
+          authorization: `Bearer ${token.token.token}`,
+        },
+      });
+      //   console.log(res)
+      let data = await res.json();
+      setUrl(data);
+      console.log(data);
+    } catch (error) {}
+  };
 
   return (
     <div>
@@ -124,15 +120,29 @@ useEffect(()=>{
             </Grid>
           </Grid>
         </Box>
-        
-       {
-        
-           url.length>0 ? 
-          url.map((e)=>(
-            <div  key={e._id}><a style={{color:new Date().getTime()-(+e.created)>=1000*3600*48?'grey':'green'}}  href={`http://localhost:4000/url/${e.name}`} target="_blank">http://localhost:4000/url/{e.name}</a></div>
-          )):null
-        }
-        
+{
+  url.length > 0
+  ?<h3 style={{marginBottom:20}}>Each Link will expire after 48 hours from the time it created </h3>:null
+}
+        {url.length > 0
+          ? 
+          url.map((e) => (
+              <div key={e._id}>
+                <a
+                  style={{
+                    color:
+                      new Date().getTime() - +e.created >= 1000 * 3600 * 48
+                        ? "grey"
+                        : "green",
+                  }}
+                  href={`https://short-url-supply-note.herokuapp.com/url/${e.name}`}
+                  target="_blank"
+                >
+                  https://short-url-supply-note.herokuapp.com/url/{e.name}
+                </a>
+              </div>
+            ))
+          : null}
       </Container>
     </div>
   );

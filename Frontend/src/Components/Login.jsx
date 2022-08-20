@@ -53,7 +53,7 @@ export const Login = () => {
       }
       // console.log(payload);
 
-      let res = await fetch("http://localhost:4000/login", {
+      let res = await fetch("https://short-url-supply-note.herokuapp.com/login", {
         method: "POST",
         headers: {
           "content-type": "application/json",
@@ -77,7 +77,7 @@ export const Login = () => {
   return (
     <div style={{display:'flex',flexDirection:'row'}}>
       <div style={{height:'90%'}}>
-        <img style={{width:"83%"}} src={supplynote_login} alt="" />
+        <img style={{width:"82%"}} src={supplynote_login} alt="" />
       </div>
       <Container component="main" sx={{ m: 3, mx: "auto" ,flex:1,marginTop:"5%" ,marginRight:"10%"}} maxWidth="sm">
       {/* <Avatar sx={{ width: 100, height: 100, m: 5, mx: "auto" }}>SS</Avatar> */}

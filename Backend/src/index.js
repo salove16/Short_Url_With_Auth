@@ -1,5 +1,5 @@
 const express = require("express");
-
+require("dotenv").config();
 const connect = require("./config/db");
 const userController=require("./controllers/user.Controller")
 const UrlRouter = require("./controllers/url.coontroller");
@@ -31,10 +31,10 @@ app.use("/url", UrlRouter);
 
 
 
-app.listen(4000, async () => {
+app.listen(process.env.PORT || 4000, async () => {
   try {
     await connect();
-    console.log("port is listening to 4000");
+    console.log("Listening to port 4000");
   } catch (err) {
     console.log(err);
   }
