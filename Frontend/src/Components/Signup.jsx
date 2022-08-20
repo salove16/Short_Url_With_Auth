@@ -144,7 +144,7 @@ export const SignUp = () => {
             </Button>
 
             <Typography>
-              Dont't have an Account? <Link to="/login">signup</Link>
+              Dont't have an Account? <Link to="/login">login</Link>
             </Typography>
           </Grid>
         </Grid>
