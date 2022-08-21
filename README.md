@@ -25,3 +25,6 @@ User can SignUp or Login. After getting Logged in User can stay Logged in and ac
    https://short-url-supply-note.herokuapp.com/signup
 ```
 
+## User SignUp/Login and Logout along with creating short Url
+
+![user signup and login](./Frontend/assets/gif//shortUrlLogin.gif)
